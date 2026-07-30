@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="C# 像 Python 一樣直接執行，.NET 10 File-based Apps">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07111f"/><stop offset=".55" stop-color="#102a4a"/><stop offset="1" stop-color="#321b64"/></linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#38bdf8"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="20" flood-opacity=".35"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1060" cy="80" r="250" fill="#7c3aed" opacity=".16"/>
+  <circle cx="110" cy="570" r="260" fill="#0ea5e9" opacity=".12"/>
+  <g opacity=".22" fill="none" stroke="#60a5fa"><path d="M0 520 C260 420 450 650 720 500 S1010 420 1200 500"/><path d="M0 555 C250 455 470 680 740 530 S1020 450 1200 535"/></g>
+  <g transform="translate(72 70)">
+    <rect width="122" height="44" rx="22" fill="#10243c" stroke="#355978"/>
+    <text x="61" y="29" text-anchor="middle" fill="#ccecff" font-size="19" font-family="Arial, sans-serif" font-weight="700">.NET 10</text>
+    <text x="0" y="125" fill="#ffffff" font-size="58" font-family="Arial, Noto Sans TC, sans-serif" font-weight="800">C# 像 Python 一樣直接執行</text>
+    <text x="0" y="205" fill="url(#accent)" font-size="66" font-family="Arial, Noto Sans TC, sans-serif" font-weight="900">File-based Apps</text>
+    <text x="0" y="265" fill="#cae0f2" font-size="27" font-family="Arial, Noto Sans TC, sans-serif">只要一個 .cs 檔案，不必先建立 .csproj</text>
+    <g transform="translate(0 316)">
+      <rect width="462" height="154" rx="18" fill="#050b13" stroke="#294661" filter="url(#shadow)"/>
+      <circle cx="26" cy="24" r="6" fill="#fb7185"/><circle cx="47" cy="24" r="6" fill="#fbbf24"/><circle cx="68" cy="24" r="6" fill="#4ade80"/>
+      <text x="28" y="68" fill="#a9bed3" font-size="18" font-family="monospace">hello.cs</text>
+      <text x="28" y="108" fill="#e5f5ff" font-size="21" font-family="monospace">Console.WriteLine(</text>
+      <text x="250" y="108" fill="#6ee7b7" font-size="21" font-family="monospace">"Hello!"</text>
+      <text x="355" y="108" fill="#e5f5ff" font-size="21" font-family="monospace">);</text>
+    </g>
+  </g>
+  <g transform="translate(770 130)">
+    <rect width="355" height="350" rx="26" fill="#0b1728" stroke="#31516d" filter="url(#shadow)"/>
+    <text x="30" y="56" fill="#7dd3fc" font-size="23" font-family="Arial, sans-serif" font-weight="800">$ dotnet hello.cs</text>
+    <text x="30" y="104" fill="#ffffff" font-size="21" font-family="monospace">Hello from C#! 🚀</text>
+    <line x1="30" y1="138" x2="325" y2="138" stroke="#223b55"/>
+    <text x="30" y="190" fill="#ffffff" font-size="23" font-family="Arial, Noto Sans TC, sans-serif" font-weight="700">單檔執行</text>
+    <text x="30" y="228" fill="#a9bed3" font-size="20" font-family="Arial, Noto Sans TC, sans-serif">NuGet 套件</text>
+    <text x="30" y="266" fill="#a9bed3" font-size="20" font-family="Arial, Noto Sans TC, sans-serif">Minimal Web API</text>
+    <text x="30" y="304" fill="#a9bed3" font-size="20" font-family="Arial, Noto Sans TC, sans-serif">AI Agent 工具</text>
+  </g>
+  <text x="72" y="586" fill="#9fb6ca" font-size="20" font-family="Arial, sans-serif">yazelin.github.io/dotnet10-csharp-file-demo</text>
+</svg>
