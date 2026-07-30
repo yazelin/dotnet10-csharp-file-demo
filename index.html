@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content=".NET 10 File-based Apps 繁體中文互動 Demo：像 Python 一樣直接執行單一 C# 檔案。" />
+  <title>C# 也能像 Python 一樣直接跑？｜.NET 10 File-based Apps</title>
+  <style>
+    :root{--bg:#07111f;--panel:#0d1b2d;--panel2:#10243c;--text:#edf6ff;--muted:#a9bed3;--accent:#7dd3fc;--accent2:#a78bfa;--ok:#6ee7b7;--line:#223b55;--code:#050b13}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,"Noto Sans TC",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 15% 0%,#173b60 0,transparent 34%),radial-gradient(circle at 90% 8%,#34245f 0,transparent 30%),var(--bg);color:var(--text);line-height:1.75}
+    a{color:var(--accent)}.wrap{width:min(1080px,calc(100% - 32px));margin:auto}.hero{padding:88px 0 56px}.badge{display:inline-flex;gap:8px;align-items:center;border:1px solid #355978;background:#0b2034cc;border-radius:999px;padding:7px 13px;color:#ccecff;font-size:14px}.hero h1{font-size:clamp(38px,7vw,72px);line-height:1.08;margin:20px 0 18px;letter-spacing:-.04em;max-width:940px}.gradient{background:linear-gradient(90deg,var(--accent),#d8b4fe);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{font-size:clamp(18px,2.4vw,24px);color:#cae0f2;max-width:830px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{display:inline-block;padding:11px 18px;border-radius:12px;text-decoration:none;font-weight:700}.primary{background:linear-gradient(90deg,#38bdf8,#8b5cf6);color:white}.secondary{border:1px solid #365875;background:#0b1b2c;color:#dff3ff}
+    section{padding:34px 0}.card{background:linear-gradient(180deg,#10243ce8,#0b1728e8);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:0 18px 60px #0005}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.card h2,.card h3{margin-top:0}.muted{color:var(--muted)}.kicker{color:var(--accent);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:13px}.compare{font-size:22px;font-weight:800}.arrow{color:var(--ok)}
+    .codebox{position:relative;background:var(--code);border:1px solid #24384d;border-radius:14px;overflow:hidden;margin:15px 0}.codehead{display:flex;justify-content:space-between;align-items:center;padding:8px 13px;background:#0b1724;border-bottom:1px solid #223449;color:#9db5ca;font-size:13px}.copy{border:0;background:#17324b;color:#d9f1ff;border-radius:8px;padding:6px 10px;cursor:pointer}.copy:hover{background:#234866}pre{margin:0;padding:18px;overflow:auto;font:14px/1.65 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#d9efff;white-space:pre}.kw{color:#c4b5fd}.str{color:#86efac}.cmd{color:#7dd3fc}.note{border-left:4px solid var(--accent);background:#0b2033;padding:14px 17px;border-radius:8px}.warn{border-left-color:#fbbf24}.pill{display:inline-block;padding:3px 9px;border:1px solid #33516c;border-radius:999px;color:#c8dded;font-size:13px;margin:3px}.steps{counter-reset:s}.step{position:relative;padding-left:54px;margin:22px 0}.step:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#0ea5e9,#8b5cf6);font-weight:900}.refs li{margin:10px 0}footer{padding:42px 0 70px;color:#8fa8bd;text-align:center}.small{font-size:14px}.check{color:var(--ok);font-weight:800}@media(max-width:760px){.grid,.three{grid-template-columns:1fr}.hero{padding-top:58px}.card{padding:20px}.hero h1{font-size:42px}}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <span class="badge">⚡ .NET 10 · File-based Apps</span>
+      <h1>C# 現在也能像 <span class="gradient">Python 腳本</span>一樣，存成一個檔案就跑</h1>
+      <p class="lead">不用先建立 <code>.csproj</code>，直接寫一個 <code>.cs</code> 檔並執行。很適合 AI Agent 工具、一次性資料處理、自動化與快速原型。</p>
+      <div class="actions"><a class="btn primary" href="#demo">立即看 Demo</a><a class="btn secondary" href="#ai">為什麼適合 AI</a></div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="demo">
+      <div class="card">
+        <div class="kicker">30 秒上手</div><h2>第一個單檔 C# 程式</h2>
+        <div class="grid">
+          <div>
+            <h3>1. 建立 <code>hello.cs</code></h3>
+            <div class="codebox"><div class="codehead"><span>hello.cs</span><button class="copy">複製</button></div><pre>var name = args.Length &gt; 0 ? args[0] : <span class="str">"World"</span>;
+Console.WriteLine(<span class="str">$"Hello, {name}!"</span>);</pre></div>
+          </div>
+          <div>
+            <h3>2. 直接執行</h3>
+            <div class="codebox"><div class="codehead"><span>Terminal</span><button class="copy">複製</button></div><pre><span class="cmd">dotnet hello.cs -- Yazelin</span></pre></div>
+            <p class="muted">輸出：<strong>Hello, Yazelin!</strong></p>
+          </div>
+        </div>
+        <div class="note"><strong>重點：</strong>外觀看起來像腳本，但底層仍是正常編譯的 C# 應用程式；SDK 會自動處理暫存專案、建置與快取。</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="grid three">
+        <article class="card"><div class="kicker">Python</div><div class="compare">python hello.py</div><p class="muted">直覺、快速、單檔執行。</p></article>
+        <article class="card"><div class="kicker">.NET 10</div><div class="compare">dotnet hello.cs</div><p class="muted">相似的使用體驗，加上 C# 強型別與 .NET 生態。</p></article>
+        <article class="card"><div class="kicker">成長路徑</div><div class="compare">單檔 <span class="arrow">→</span> 正式專案</div><p class="muted">原型變大後，可轉成一般專案繼續維護。</p></article>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <div class="kicker">不用 csproj</div><h2>直接引用 NuGet 套件</h2>
+        <p>在檔案頂端加入 <code>#:package</code>，SDK 會自動還原套件。</p>
+        <div class="codebox"><div class="codehead"><span>console-demo.cs</span><button class="copy">複製</button></div><pre><span class="kw">#:package</span> Spectre.Console@*
+
+using Spectre.Console;
+
+var name = args.FirstOrDefault() ?? <span class="str">"開發者"</span>;
+AnsiConsole.MarkupLine(<span class="str">$"[bold deepskyblue1]Hello, {name}![/]"</span>);</pre></div>
+        <div class="codebox"><div class="codehead"><span>Terminal</span><button class="copy">複製</button></div><pre><span class="cmd">dotnet console-demo.cs -- Yazelin</span></pre></div>
+        <p><span class="pill">#:package</span><span class="pill">#:sdk</span><span class="pill">#:project</span><span class="pill">#:property</span><span class="pill">#:include（SDK 版本有限制）</span></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="grid">
+        <article class="card">
+          <div class="kicker">Web API</div><h2>一個檔案啟動網站</h2>
+          <div class="codebox"><div class="codehead"><span>api.cs</span><button class="copy">複製</button></div><pre><span class="kw">#:sdk</span> Microsoft.NET.Sdk.Web
+
+var app = WebApplication.Create(args);
+
+app.MapGet(<span class="str">"/"</span>, () =&gt; new {
+    message = <span class="str">"Hello from a single C# file!"</span>,
+    runtime = Environment.Version.ToString()
+});
+
+app.Run();</pre></div>
+          <div class="codebox"><div class="codehead"><span>Terminal</span><button class="copy">複製</button></div><pre><span class="cmd">dotnet api.cs</span></pre></div>
+        </article>
+        <article class="card">
+          <div class="kicker">Unix / macOS / Linux</div><h2>像真正腳本直接執行</h2>
+          <div class="codebox"><div class="codehead"><span>tool.cs</span><button class="copy">複製</button></div><pre>#!/usr/bin/env -S dotnet --
+
+Console.WriteLine(<span class="str">$"收到 {args.Length} 個參數"</span>);</pre></div>
+          <div class="codebox"><div class="codehead"><span>Terminal</span><button class="copy">複製</button></div><pre><span class="cmd">chmod +x tool.cs
+./tool.cs one two three</span></pre></div>
+          <div class="note warn"><strong>注意：</strong>shebang 直接執行僅適用 Unix 類平台；Windows 請使用 <code>dotnet tool.cs</code>。</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="ai">
+      <div class="card">
+        <div class="kicker">AI + C#</div><h2>為什麼 AI Agent 值得考慮 C# 單檔工具？</h2>
+        <div class="grid three">
+          <div><h3>✓ 容易生成</h3><p class="muted">單一檔案、頂層陳述式，減少樣板與專案結構負擔。</p></div>
+          <div><h3>✓ 編譯期檢查</h3><p class="muted">型別錯誤通常能在執行前被發現，降低生成程式碼的低級錯誤。</p></div>
+          <div><h3>✓ 企業整合</h3><p class="muted">可直接使用既有 .NET 類別庫、Azure、Windows 與內部 API。</p></div>
+          <div><h3>✓ CLI 與 API</h3><p class="muted">適合 JSON、CSV、HTTP、自動化、資料轉換與 Agent tools。</p></div>
+          <div><h3>✓ 可升級</h3><p class="muted">概念驗證成功後，可轉成專案型應用，延續原本程式碼。</p></div>
+          <div><h3>✓ 可發佈</h3><p class="muted">不只執行，也能建置與發佈成可部署的 .NET 應用程式。</p></div>
+        </div>
+        <div class="note"><strong>適合：</strong>企業自動化、Agent 外部工具、REST API 整合、CLI、小型服務。<br><strong>Python 仍較強：</strong>Notebook、NumPy／Pandas、PyTorch 與資料科學套件生態。</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <div class="kicker">實作流程</div><h2>現在就試試看</h2>
+        <div class="step"><h3>安裝 .NET 10 SDK</h3><p class="muted">確認終端機執行 <code>dotnet --version</code> 顯示 10.x。</p></div>
+        <div class="step"><h3>建立一個 <code>.cs</code> 檔</h3><p class="muted">先從一行 <code>Console.WriteLine("Hello");</code> 開始。</p></div>
+        <div class="step"><h3>執行</h3><p class="muted"><code>dotnet app.cs</code>，或使用 <code>dotnet run app.cs</code>。</p></div>
+        <div class="step"><h3>需要套件就加指令</h3><p class="muted">例如 <code>#:package Spectre.Console@*</code>。</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="card refs">
+        <div class="kicker">官方資料</div><h2>Microsoft 原始參考頁面</h2>
+        <ul>
+          <li><a href="https://learn.microsoft.com/zh-tw/dotnet/core/sdk/file-based-apps" target="_blank" rel="noopener">Microsoft Learn：檔案型應用程式</a></li>
+          <li><a href="https://learn.microsoft.com/zh-tw/dotnet/csharp/fundamentals/tutorials/file-based-programs" target="_blank" rel="noopener">Microsoft Learn：建置檔案型 C# 程式</a></li>
+          <li><a href="https://devblogs.microsoft.com/dotnet/announcing-dotnet-run-app/" target="_blank" rel="noopener">.NET Blog：Announcing dotnet run app.cs</a></li>
+          <li><a href="https://dotnet.microsoft.com/download/dotnet/10.0" target="_blank" rel="noopener">下載 .NET 10</a></li>
+        </ul>
+        <p class="small muted">頁面內容依 Microsoft 官方文件整理。提醒：部分新指令（例如 <code>#:include</code>）會依 .NET SDK 小版本而異，實際使用前請查看最新版文件。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">Made for learning · <span class="check">C# file-based apps</span> · .NET 10</div></footer>
+  <script>
+    document.querySelectorAll('.copy').forEach(btn=>btn.addEventListener('click',async()=>{
+      const text=btn.closest('.codebox').querySelector('pre').innerText;
+      await navigator.clipboard.writeText(text);
+      const old=btn.textContent;btn.textContent='已複製 ✓';setTimeout(()=>btn.textContent=old,1400);
+    }));
+  </script>
+</body>
+</html>
