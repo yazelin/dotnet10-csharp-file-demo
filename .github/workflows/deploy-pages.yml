@@ -24,6 +24,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Generate Open Graph PNG
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin
+          rsvg-convert -w 1200 -h 630 og-image.svg -o og-image.png
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
