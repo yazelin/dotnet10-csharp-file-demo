@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yazelin.github.io/dotnet10-csharp-file-demo/sitemap.xml
